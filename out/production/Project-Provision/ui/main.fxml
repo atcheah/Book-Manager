@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller">
+   <top>
+      <MenuBar fx:id="menu" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="viewLibrary" mnemonicParsing="false" text="View">
+               <items>
+                  <MenuItem fx:id="search" mnemonicParsing="false" onAction="#searchBook" text="Search a book" />
+               </items></Menu>
+            <Menu fx:id="librarianFeatures" mnemonicParsing="false" text="Librarian Features">
+               <items>
+                  <MenuItem fx:id="showLibraries" mnemonicParsing="false" onAction="#findLibraries" text="Show Local Libraries" />
+                  <MenuItem fx:id="searchTrack" mnemonicParsing="false" onAction="#getSearched" text="Search viewed books" />
+               </items></Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TableView fx:id="tableView" onMouseClicked="#showDetails" prefHeight="337.0" prefWidth="306.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="titleColumn" editable="false" prefWidth="75.0" text="Title" />
+          <TableColumn fx:id="authorColumn" editable="false" prefWidth="75.0" text="Author" />
+            <TableColumn fx:id="yearColumn" editable="false" prefWidth="75.0" text="Year" />
+            <TableColumn fx:id="editionColumn" editable="false" prefWidth="75.0" text="Edition" />
+        </columns>
+      </TableView>
+   </center>
+   <right>
+      <AnchorPane fx:id="bookDetails" prefHeight="337.0" prefWidth="162.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="label1" prefHeight="22.0" prefWidth="202.0" text="Details" underline="true">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <Text fx:id="details" boundsType="LOGICAL_VERTICAL_CENTER" layoutX="28.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="None selected" wrappingWidth="145.13671875" />
+            <CheckBox fx:id="rent" layoutX="7.0" layoutY="315.0" mnemonicParsing="false" onAction="#rentBook" text="Rented" />
+         </children>
+      </AnchorPane>
+   </right>
+   <bottom>
+      <HBox fx:id="addBook" prefHeight="38.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="label2" prefHeight="17.0" prefWidth="94.0" text="  Add Book" textAlignment="CENTER" />
+            <TextField fx:id="authorField" prefHeight="25.0" prefWidth="110.0" promptText="Author" />
+            <TextField fx:id="titleField" prefHeight="25.0" prefWidth="130.0" promptText="Title" />
+            <TextField fx:id="yearField" prefHeight="25.0" prefWidth="48.0" promptText="Year" />
+            <TextField fx:id="editionField" prefHeight="25.0" prefWidth="52.0" promptText="ed." />
+            <ComboBox fx:id="genre" prefHeight="25.0" prefWidth="86.0" promptText="Genre" />
+            <Button fx:id="adder" mnemonicParsing="false" onAction="#addBook" onKeyPressed="#addBook" text="Enter" />
+         </children>
+      </HBox>
+   </bottom>
+   <left>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="allButton" mnemonicParsing="false" onMouseClicked="#showLibrary" text="All" />
+            <Button fx:id="fictionButton" mnemonicParsing="false" onMouseClicked="#showFiction" text="Fiction" />
+            <Button fx:id="nonfictionButton" mnemonicParsing="false" onMouseClicked="#showNonFiction" text="Non-Fiction" />
+            <Button fx:id="textButton" mnemonicParsing="false" onMouseClicked="#showTextbooks" text="Textbook" />
+            <Button fx:id="familyButton" mnemonicParsing="false" onMouseClicked="#showFamily" text="Family" />
+            <Button fx:id="cookingButton" mnemonicParsing="false" onMouseClicked="#showCooking" text="Cooking" />
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
